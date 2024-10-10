@@ -18,15 +18,15 @@ const AddUser = ({ onAddUser }) => {
             relationship,
         };
 
-        onAddUser(newUser); // Llama a la función pasada como prop para agregar el usuario
+        onAddUser(newUser);
         setName('');
         setAge('');
         setRelationship('');
     };
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-bold mb-4">Agregar Usuario</h2>
+        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md mb-4">
+            <h2 className="text-xl font-bold mb-4">Agregar Miembro de la Familia</h2>
             <div className="mb-4">
                 <label className="block mb-2">Nombre:</label>
                 <input
@@ -65,7 +65,7 @@ const AddUser = ({ onAddUser }) => {
                 </select>
             </div>
             <button type="submit" className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
-                Agregar Usuario
+                Agregar Miembro
             </button>
         </form>
     );
