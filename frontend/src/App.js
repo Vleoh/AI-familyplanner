@@ -4,11 +4,18 @@ import { HomeIcon, UsersIcon, ChatBubbleLeftIcon } from '@heroicons/react/24/out
 import Home from './pages/Home'; // Asegúrate de que la ruta y el nombre sean correctos
 import FamilyMembers from './pages/FamilyMembers'; // Asegúrate de que esta ruta sea correcta
 import AIChat from './components/AIChat'; // Importar el componente AIChat
+import Events from './pages/Events'; // Asegúrate de importar la página de eventos
+import Tasks from './pages/Tasks'; // Importar el componente Tasks
 
 function App() {
     const [isOpen, setIsOpen] = useState(false); // Estado para controlar el menú
     const menuRef = useRef(null); // Ref para el menú
     const buttonRef = useRef(null); // Ref para el botón
+    const [users, setUsers] = useState([
+        { name: 'Juan', age: 30, relationship: 'hermano' },
+        { name: 'María', age: 28, relationship: 'hermana' },
+        // Agrega más usuarios según sea necesario
+    ]);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -73,10 +80,10 @@ function App() {
                     </button>
                     <Switch>
                         <Route path="/" exact component={Home} />
-                        <Route path="/family" component={FamilyMembers} />
+                        <Route path="/family" component={() => <FamilyMembers users={users} />} />
                         <Route path="/disputes" component={() => <div>Resolución de Disputas</div>} />
-                        <Route path="/tasks" component={() => <div>Tareas y Responsabilidades</div>} />
-                        <Route path="/events" component={() => <div>Planificación de Eventos</div>} />
+                        <Route path="/tasks" component={() => <Tasks users={users} />} /> {/* Asegúrate de pasar los usuarios aquí */}
+                        <Route path="/events" component={Events} />
                         <Route path="/ai" component={AIChat} />
                     </Switch>
                 </div>
